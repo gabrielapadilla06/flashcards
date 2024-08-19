@@ -1,8 +1,7 @@
 'use client'
 
 import { useEffect, useState } from "react"
-import { useRouter } from "next/router"
-import { useSearchParams } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Box, CircularProgress, Container, Typography } from "@mui/material"
 
 const ResultPage = () => {
@@ -28,6 +27,7 @@ const ResultPage = () => {
                     setError(sessionData.error)
                 }
             } catch (err) {
+                console.error(err)
                 setError('An error occurred while retrieving the session.')
             } finally {
                 setLoading(false)

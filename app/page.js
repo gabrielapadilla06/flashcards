@@ -12,7 +12,7 @@ export default function Home() {
         const checkoutSession = await fetch('/api/checkout-session', {
             method: 'POST',
             headers: {
-                origin: 'http://localhost:3000', // TODO: Change this to your production domain
+                'origin': 'http://localhost:3000', // TODO: Change this to your production domain
             }
         })
         const checkoutSessionData = await checkoutSession.json()
