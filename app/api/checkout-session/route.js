@@ -8,7 +8,7 @@ const formatAmmountForStripe = (amount)=>{
 }
 
 export async function POST(req){
-    const param = {
+    const params = {
         submit_type: 'subscription',
         payment_method_types: ['card'],
         line_items: [
