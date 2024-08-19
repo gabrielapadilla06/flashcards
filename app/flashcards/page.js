@@ -2,7 +2,7 @@
 
 import { useUser } from '@clerk/nextjs'
 import { useEffect, useState } from 'react'
-import { CollectionReference, doc, getDoc, setDoc, collection } from 'firebase/firestore'
+import { doc, getDoc, setDoc, collection } from 'firebase/firestore'
 import { db } from '@/firebase'
 import { useRouter } from 'next/navigation'
 import { Card, CardActionArea, CardContent, Container, Grid, Typography } from '@mui/material'
@@ -45,7 +45,7 @@ export default function Flashcards() {
                     <Card>
                         <CardActionArea
                             onClick={() => {
-                                handleCardClick(id)
+                                handleCardClick(flashcard.name)
                             }}
                         >
                             <CardContent>
