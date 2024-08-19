@@ -4,6 +4,11 @@ import { useEffect, useState } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Box, CircularProgress, Container, Typography } from "@mui/material"
 
+const formatAmmountForStripe = (amount) => {
+    // Convert amount from cents to dollars and return as 2 decimal places
+    return (amount / 100).toFixed(2)
+}
+
 const ResultPage = () => {
     const router = useRouter()
     const searchParams = useSearchParams()
@@ -23,6 +28,7 @@ const ResultPage = () => {
                 const sessionData = await res.json()
                 if (res.ok) {
                     setSession(sessionData)
+                    console.log(sessionData)
                 } else {
                     setError(sessionData.error)
                 }
@@ -61,9 +67,9 @@ const ResultPage = () => {
                     <>
                         <Typography variant="h4">Thank you for your payment</Typography>
                         <Box sx={{ mt: 22 }}>
-                            <Typography variant="h6">Payment ID: {session.payment_id}</Typography>
-                            <Typography variant="h6">Amount: {session.amount}</Typography>
-                            <Typography variant="body1">You will receive an email confirmation shortly.</Typography>
+                            <Typography variant="h6">ID: {session.id}</Typography>
+                            <Typography variant="h6">Amount: {formatAmmountForStripe(session.amount_total)}</Typography>
+                            <Typography variant="body1" mt={2}>You will receive an email confirmation shortly.</Typography>
                         </Box>
                     </>
                 ) : (
